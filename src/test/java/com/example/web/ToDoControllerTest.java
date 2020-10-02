@@ -55,21 +55,6 @@ public class ToDoControllerTest {
                 .andDo(print());
     }
 
-    @Test
-    public void verifyInvalidToDoArgument() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/todo/f").accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.errorCode").value(400))
-                .andExpect(jsonPath("$.message").value("The request could not be understood by the server due to malformed syntax."))
-                .andDo(print());
-    }
-
-    @Test
-    public void verifyInvalidToDoId() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/todo/0").accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.errorCode").value(404))
-                .andExpect(jsonPath("$.message").value("ToDo doesn´t exist"))
-                .andDo(print());
-    }
 
     @Test
     public void verifyNullToDo() throws Exception {
@@ -84,14 +69,6 @@ public class ToDoControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/todo/4").accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.status").value(200))
                 .andExpect(jsonPath("$.message").value("ToDo has been deleted"))
-                .andDo(print());
-    }
-
-    @Test
-    public void verifyInvalidToDoIdToDelete() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/todo/9").accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.errorCode").value(404))
-                .andExpect(jsonPath("$.message").value("ToDo to delete doesn´t exist"))
                 .andDo(print());
     }
 
@@ -133,17 +110,6 @@ public class ToDoControllerTest {
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.text").value("New ToDo Text"))
                 .andExpect(jsonPath("$.completed").value(false))
-                .andDo(print());
-    }
-
-    @Test
-    public void verifyInvalidToDoUpdate() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.patch("/todo/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{ \"idd\": \"8\", \"text\" : \"New ToDo Sample\", \"completed\" : \"false\" }")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.errorCode").value(404))
-                .andExpect(jsonPath("$.message").value("ToDo to update doesn´t exist"))
                 .andDo(print());
     }
 
