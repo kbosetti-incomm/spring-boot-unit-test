@@ -1,3 +1,6 @@
+
+![](https://github.com/kbosetti-incomm/spring-boot-unit-test/workflows/tests/badge.svg)
+
 # SpringBootUnitTest - Prototype
 
 1. mvn clean
