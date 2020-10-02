@@ -55,15 +55,6 @@ public class ToDoControllerTest {
                 .andDo(print());
     }
 
-
-    @Test
-    public void verifyNullToDo() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/todo/6").accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.errorCode").value(404))
-                .andExpect(jsonPath("$.message").value("ToDo doesn´t exist"))
-                .andDo(print());
-    }
-
     @Test
     public void verifyDeleteToDo() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/todo/4").accept(MediaType.APPLICATION_JSON))
