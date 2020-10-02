@@ -1,4 +1,4 @@
-# SpringBootUnitTestTutorial - Prototype
+# SpringBootUnitTest - Prototype
 
 1. mvn clean
 2. mvn test
